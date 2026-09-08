@@ -44,7 +44,7 @@
     overflow-x:hidden;
   }
   .serif{ font-family:'Fraunces', serif; }
-
+ 
   /* ---------- Desktop ambient shell ---------- */
   .app-shell{
     width:100%;
@@ -71,7 +71,7 @@
       box-shadow: 0 30px 70px rgba(43,27,17,0.18), 0 0 0 1px var(--line);
     }
   }
-
+ 
   /* ---------- Header ---------- */
   .topbar{
     display:flex; align-items:center; justify-content:space-between;
@@ -101,12 +101,12 @@
     border:1px solid rgba(176,96,46,0.25);
     padding:6px 12px; border-radius:999px;
   }
-
+ 
   /* ---------- Screens ---------- */
   .screen{ display:none; flex:1; flex-direction:column; animation:rise 380ms cubic-bezier(.2,.8,.2,1); }
   .screen.active{ display:flex; }
   @keyframes rise{ from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);} }
-
+ 
   /* ================= WELCOME ================= */
   .hero{
     padding:6px 26px 0;
@@ -144,7 +144,7 @@
     margin-bottom:26px;
   }
   .welcome-note b{ color:var(--coffee-900); }
-
+ 
   .form-wrap{ padding:0 26px 26px; }
   .field{ margin-bottom:16px; }
   .field label{
@@ -175,7 +175,7 @@
     color:var(--red);
     margin-top:5px;
   }
-
+ 
   .btn{
     display:flex; align-items:center; justify-content:center; gap:8px;
     width:100%;
@@ -204,12 +204,12 @@
     background:var(--coffee-900);
     color:var(--cream-light);
   }
-
+ 
   /* ================= MENU ================= */
   .menu-head{ padding:2px 22px 6px; }
   .menu-head h2{ font-family:'Fraunces', serif; font-size:26px; margin:0 0 2px; }
   .menu-head p{ margin:0; font-size:13.5px; color:var(--coffee-500); font-style:italic; font-family:'Fraunces', serif;}
-
+ 
   .cat-nav{
     display:flex; gap:8px; padding:16px 22px 8px;
     overflow-x:auto; scrollbar-width:none; position:sticky; top:70px; z-index:15;
@@ -233,7 +233,7 @@
     color:var(--cream-light);
     border-color:var(--coffee-900);
   }
-
+ 
   .menu-list{ padding:6px 18px 120px; }
   .cat-section{ margin-top:22px; }
   .cat-title{
@@ -286,7 +286,7 @@
     font-size:15px; font-weight:700; cursor:pointer; line-height:1;
   }
   .stepper span{ color:var(--cream-light); font-size:13.5px; font-weight:700; min-width:14px; text-align:center; }
-
+ 
   .cart-bar{
     position:fixed; left:50%; transform:translateX(-50%);
     bottom:0; width:100%; max-width:480px;
@@ -305,7 +305,7 @@
     background:var(--clay); color:#FBF2E7; font-weight:700; font-size:14.5px;
     cursor:pointer;
   }
-
+ 
   /* ================= CART DRAWER ================= */
   .overlay{
     position:fixed; inset:0; background:rgba(43,27,17,0.45);
@@ -340,7 +340,7 @@
   .subtotal-row{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px; }
   .subtotal-row .lbl{ font-size:13.5px; color:var(--coffee-500); }
   .subtotal-row .amt{ font-family:'Fraunces', serif; font-size:24px; font-weight:600; color:var(--coffee-900); }
-
+ 
   /* ================= CAPTCHA MODAL ================= */
   .modal{
     position:fixed; inset:0; z-index:50; display:none;
@@ -386,7 +386,7 @@
     width:26px; height:26px; border-radius:8px; cursor:pointer; font-size:13px;
   }
   .captcha-err{ color:var(--red); font-size:12.5px; min-height:16px; margin:8px 0 4px; text-align:center; }
-
+ 
   /* ================= CONFIRMATION ================= */
   .confirm-wrap{ padding:30px 26px 40px; text-align:center; flex:1; display:flex; flex-direction:column; }
   .confirm-badge{
@@ -407,55 +407,11 @@
   .order-card .oc-id{ font-family:'Fraunces', serif; font-weight:600; font-size:17px; }
   .status-tag{ font-size:11.5px; font-weight:800; padding:5px 11px; border-radius:999px; }
   .status-received{ background:var(--green-bg); color:var(--green); }
-  .status-new{ background:var(--orange-bg); color:var(--orange); }
-  .status-preparing{ background:#FDF1D6; color:#96701A; }
-  .status-ready{ background:var(--green-bg); color:var(--green); }
   .oc-item{ display:flex; justify-content:space-between; font-size:14px; color:var(--coffee-700); padding:5px 0; }
   .oc-total{ display:flex; justify-content:space-between; align-items:center; margin-top:12px; padding-top:12px; border-top:1px dashed var(--line); }
   .oc-total b{ font-family:'Fraunces', serif; font-size:19px; color:var(--coffee-900); }
   .relax-note{ font-size:13.5px; color:var(--coffee-500); font-style:italic; font-family:'Fraunces', serif; margin-bottom:24px; }
-
-  /* ================= DASHBOARD ================= */
-  .dash-shell{ background:var(--cream-light); flex:1; display:flex; flex-direction:column; }
-  .dash-head{ padding:20px 22px 14px; display:flex; align-items:center; justify-content:space-between; }
-  .dash-head h2{ font-family:'Fraunces', serif; font-size:22px; margin:0; }
-  .dash-head span{ font-size:12px; color:var(--coffee-500); }
-  .dash-list{ padding:4px 18px 40px; overflow-y:auto; }
-  .dash-card{
-    background:var(--paper); border:1px solid var(--line); border-radius:var(--radius-md);
-    padding:16px; margin-bottom:14px; box-shadow:var(--shadow);
-  }
-  .dash-card.is-ready{ opacity:0.75; }
-  .dash-top{ display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px; }
-  .dash-id{ font-family:'Fraunces', serif; font-weight:600; font-size:16px; }
-  .dash-meta{ font-size:12.5px; color:var(--coffee-500); margin-top:3px; }
-  .dash-items{ margin:10px 0; padding:10px 0; border-top:1px dashed var(--line); border-bottom:1px dashed var(--line); }
-  .dash-items div{ font-size:13.5px; color:var(--coffee-700); padding:2px 0; }
-  .dash-total{ display:flex; justify-content:space-between; align-items:center; margin:10px 0 12px; }
-  .dash-total b{ font-family:'Fraunces', serif; font-size:16.5px; }
-  .dash-actions{ display:flex; gap:8px; }
-  .dash-actions button{
-    flex:1; padding:10px 6px; font-size:12px; font-weight:700;
-    border-radius:10px; border:1.5px solid var(--line);
-    background:var(--paper); color:var(--coffee-700); cursor:pointer;
-    transition:all 140ms ease;
-  }
-  .dash-actions button.step-active{
-    background:var(--coffee-900); color:var(--cream-light); border-color:var(--coffee-900);
-  }
-  .dash-actions button:disabled{ opacity:0.4; cursor:default; }
-  .dash-empty{ text-align:center; padding:60px 20px; color:var(--coffee-500); }
-
-  .demo-link{
-    position:fixed; top:14px; right:14px; z-index:60;
-    font-size:11px; font-weight:700; letter-spacing:.3px;
-    background:var(--coffee-900); color:var(--cream-light);
-    padding:8px 12px; border-radius:999px; border:none; cursor:pointer;
-    box-shadow:0 6px 16px rgba(0,0,0,0.25);
-    opacity:0.92;
-  }
-  @media (min-width:900px){ .demo-link{ right:calc(50% - 220px); } }
-
+ 
   .toast{
     position:fixed; left:50%; transform:translateX(-50%) translateY(10px);
     bottom:26px; z-index:70;
@@ -468,7 +424,7 @@
 </style>
 </head>
 <body>
-
+ 
 <noscript>
   <div style="position:fixed; inset:0; z-index:999; background:#B0392C; color:#FBF2E7; font-family:sans-serif; padding:24px; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px;">
     <div style="font-size:20px; font-weight:800;">JavaScript is turned off in this browser</div>
@@ -477,16 +433,14 @@
     </div>
   </div>
 </noscript>
-
-<button class="demo-link" data-action="goToDashboard" type="button">Demo Dashboard →</button>
-
+ 
 <div class="app-shell" id="appShell">
-
+ 
   <div class="topbar" id="topbar">
     <div class="wordmark">Elo <small>CAFÉ</small></div>
     <div class="table-pill" id="tablePill" style="display:none;"></div>
   </div>
-
+ 
   <!-- ============ SCREEN 1: WELCOME ============ -->
   <section class="screen active" id="screen-welcome">
     <div class="hero">
@@ -517,7 +471,7 @@
       <button class="btn btn-primary" data-action="submitDetails" type="button">Continue to Menu →</button>
     </div>
   </section>
-
+ 
   <!-- ============ SCREEN 2: MENU ============ -->
   <section class="screen" id="screen-menu">
     <div class="menu-head">
@@ -534,7 +488,7 @@
       <button data-action="openCart" type="button">🛒 View Cart</button>
     </div>
   </section>
-
+ 
   <!-- ============ SCREEN 5: CONFIRMATION ============ -->
   <section class="screen" id="screen-confirm">
     <div class="confirm-wrap">
@@ -543,7 +497,7 @@
       <p class="sub1" id="confirmThanks">Thank you!</p>
       <p class="sub2" id="confirmTable">Table —</p>
       <p class="sub2" style="margin-top:-16px;">Your order has been sent to Elo Café.</p>
-
+ 
       <div class="order-card">
         <div class="oc-top">
           <div class="oc-id" id="confirmOrderId">Order #EL000</div>
@@ -555,28 +509,15 @@
           <b id="confirmTotal">₹0</b>
         </div>
       </div>
-
+ 
       <p class="relax-note">Please sit back and relax. Your order is being prepared. ☕</p>
       <button class="btn btn-ghost" data-action="startNewOrder" type="button">Start a New Order</button>
     </div>
   </section>
-
-  <!-- ============ SCREEN 6: DASHBOARD ============ -->
-  <section class="screen" id="screen-dashboard">
-    <div class="dash-shell">
-      <div class="dash-head">
-        <div>
-          <h2>Elo Café — Order Dashboard</h2>
-          <span>Live view for café staff</span>
-        </div>
-        <button class="btn-ghost" style="width:auto; padding:8px 14px; border-radius:10px; font-size:12px;" data-action="goToWelcome" type="button">Exit</button>
-      </div>
-      <div class="dash-list" id="dashList"></div>
-    </div>
-  </section>
-
+ 
+ 
 </div>
-
+ 
 <!-- ============ CART DRAWER ============ -->
 <div class="overlay" id="overlay" data-action="closeAllOverlays"></div>
 <div class="drawer" id="cartDrawer">
@@ -594,7 +535,7 @@
     <button class="btn btn-primary" id="placeOrderBtn" data-action="openCaptcha" type="button">Place Order →</button>
   </div>
 </div>
-
+ 
 <!-- ============ CAPTCHA MODAL ============ -->
 <div class="modal" id="captchaModal">
   <div class="modal-card">
@@ -614,9 +555,9 @@
     <button class="btn btn-ghost" style="margin-top:10px;" data-action="closeCaptcha" type="button">Back to Cart</button>
   </div>
 </div>
-
+ 
 <div class="toast" id="toast"></div>
-
+ 
 <script>
 /* ================= DATA ================= */
 const MENU = [
@@ -635,32 +576,38 @@ const MENU = [
     { id:"d2", name:"Cheesecake", desc:"Creamy classic, buttery crust", price:180, ic:"🍰" },
   ]},
 ];
-
+ 
 let customer = { name:"", table:"", phone:"" };
 let cart = {};              // { itemId: qty }
-let orders = [];            // shared order store (dashboard + confirmation)
-let orderCounter = 42;
 let currentCaptcha = "";
-let lastPlacedOrder = null;
-
-/* ---- persistence: keep orders across page refresh on this device ---- */
-const STORE_KEY = "elo_orders_v1";
-const COUNTER_KEY = "elo_order_counter_v1";
-function saveOrders(){
-  try{
-    localStorage.setItem(STORE_KEY, JSON.stringify(orders));
-    localStorage.setItem(COUNTER_KEY, String(orderCounter));
-  }catch(e){ /* storage unavailable, fail silently */ }
+ 
+/* ---- shared order store ----
+   This page no longer keeps its own separate order list or its own demo
+   dashboard. Every order placed here is written directly into the SAME
+   localStorage keys the admin panel (admin.html) reads from, using the
+   same id counter and the same order shape, so a placed order shows up
+   as a real pending order — with a real notification — in Admin > Orders.
+ 
+   IMPORTANT: this only works if index_1.html and admin.html are served
+   from the same origin (e.g. both opened from the same local web server /
+   same domain). Two separate local files opened as file:// tabs generally
+   do NOT share localStorage in most browsers. */
+const ADMIN_LS = {
+  orders: "elo_admin_orders",
+  counter: "elo_admin_counter",
+};
+function adminLsGet(key, fallback){
+  try{ const raw = localStorage.getItem(key); return raw ? JSON.parse(raw) : fallback; }catch(e){ return fallback; }
 }
-function loadOrders(){
-  try{
-    const raw = localStorage.getItem(STORE_KEY);
-    const ctr = localStorage.getItem(COUNTER_KEY);
-    if(raw){ orders = JSON.parse(raw); }
-    if(ctr){ orderCounter = parseInt(ctr, 10) || orderCounter; }
-  }catch(e){ /* ignore corrupt/blocked storage */ }
+function adminLsSet(key, val){
+  try{ localStorage.setItem(key, JSON.stringify(val)); }catch(e){ /* storage unavailable, fail silently */ }
 }
-
+function nextAdminOrderId(){
+  const counter = adminLsGet(ADMIN_LS.counter, 1042) + 1;
+  adminLsSet(ADMIN_LS.counter, counter);
+  return "ORD" + counter;
+}
+ 
 /* ================= HELPERS ================= */
 function findItem(id){
   for(const c of MENU){ const f = c.items.find(i=>i.id===id); if(f) return f; }
@@ -677,14 +624,14 @@ function toast(msg){
   t.classList.add("show");
   setTimeout(()=>t.classList.remove("show"), 1800);
 }
-
+ 
 /* ================= SCREEN 1: DETAILS ================= */
 function submitDetails(){
   const name = document.getElementById("inpName").value.trim();
   const table = document.getElementById("inpTable").value.trim();
   const phone = document.getElementById("inpPhone").value.trim();
   let ok = true;
-
+ 
   const nameInp = document.getElementById("inpName");
   const tableInp = document.getElementById("inpTable");
   const phoneInp = document.getElementById("inpPhone");
@@ -692,7 +639,7 @@ function submitDetails(){
   document.getElementById("msgTable").textContent = "";
   document.getElementById("msgPhone").textContent = "";
   [nameInp, tableInp, phoneInp].forEach(i=>i.classList.remove("err"));
-
+ 
   if(!name){
     document.getElementById("msgName").textContent = "Please enter your name.";
     nameInp.classList.add("err"); ok = false;
@@ -706,14 +653,14 @@ function submitDetails(){
     phoneInp.classList.add("err"); ok = false;
   }
   if(!ok) return;
-
+ 
   customer = { name, table, phone };
   document.getElementById("tablePill").style.display = "block";
   document.getElementById("tablePill").textContent = "Table " + table;
   renderMenu();
   showScreen("screen-menu");
 }
-
+ 
 /* ================= SCREEN 2: MENU ================= */
 function renderCatNav(){
   const nav = document.getElementById("catNav");
@@ -800,7 +747,7 @@ function updateCartBar(){
     bar.classList.remove("show");
   }
 }
-
+ 
 /* ================= CART DRAWER ================= */
 function openCart(){
   renderDrawer();
@@ -838,7 +785,7 @@ function renderDrawer(){
   document.getElementById("drawerSubtotal").textContent = money(cartTotal());
   document.getElementById("placeOrderBtn").disabled = entries.length === 0;
 }
-
+ 
 /* ================= CAPTCHA ================= */
 function genCaptcha(){
   const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
@@ -872,35 +819,44 @@ function verifyCaptcha(){
   document.getElementById("captchaModal").classList.remove("show");
   placeOrder();
 }
-
+ 
 /* ================= PLACE ORDER ================= */
 function placeOrder(){
-  orderCounter += 1;
+  const items = Object.entries(cart).map(([id,qty]) => {
+    const it = findItem(id);
+    return { menuItemId: id, name: it.name, qty, price: it.price };
+  });
+  const subtotal = items.reduce((s,i)=> s + i.price*i.qty, 0);
+  const tax = Math.round(subtotal * 0.05);
+  const total = subtotal + tax;
+ 
   const order = {
-    id: "EL0" + orderCounter,
-    name: customer.name,
-    table: customer.table,
-    phone: customer.phone,
-    items: Object.entries(cart).map(([id,qty]) => {
-      const it = findItem(id);
-      return { name: it.name, qty, price: it.price };
-    }),
-    total: cartTotal(),
-    status: "new", // new -> preparing -> ready
-    time: new Date()
+    id: nextAdminOrderId(),
+    tableNumber: parseInt(customer.table, 10) || customer.table,
+    customerName: customer.name,
+    customerPhone: customer.phone,
+    items, subtotal, tax, discount: 0, total,
+    status: "PENDING",
+    createdAt: new Date().toISOString(),
+    isNew: true,
   };
-  orders.unshift(order);
-  lastPlacedOrder = order;
-  saveOrders();
+ 
+  // Write straight into the admin panel's shared order list — this is the
+  // single source of truth both apps read from, so it shows up (and
+  // triggers a real notification) in Admin > Orders immediately.
+  const allOrders = adminLsGet(ADMIN_LS.orders, []);
+  allOrders.unshift(order);
+  adminLsSet(ADMIN_LS.orders, allOrders);
+ 
   renderConfirmation(order);
   cart = {};
   showScreen("screen-confirm");
 }
-
+ 
 /* ================= SCREEN 5: CONFIRMATION ================= */
 function renderConfirmation(order){
-  document.getElementById("confirmThanks").textContent = "Thank you, " + order.name + "!";
-  document.getElementById("confirmTable").textContent = "Table " + order.table;
+  document.getElementById("confirmThanks").textContent = "Thank you, " + order.customerName + "!";
+  document.getElementById("confirmTable").textContent = "Table " + order.tableNumber;
   document.getElementById("confirmOrderId").textContent = "Order #" + order.id;
   document.getElementById("confirmItems").innerHTML = order.items.map(i =>
     `<div class="oc-item"><span>${i.name} × ${i.qty}</span><span>${money(i.price*i.qty)}</span></div>`
@@ -914,109 +870,17 @@ function startNewOrder(){
   document.getElementById("tablePill").style.display = "none";
   showScreen("screen-welcome");
 }
-
-/* ================= SCREEN 6: DASHBOARD ================= */
-function maskPhone(p){
-  if(!p || p.length < 4) return p;
-  return p.slice(0,2) + "XXXXXX" + p.slice(-2);
-}
-const STATUS_META = {
-  new:       { label:"🟠 New Order", cls:"status-new" },
-  accepted:  { label:"🟡 Accepted", cls:"status-preparing" },
-  preparing: { label:"🟡 Preparing", cls:"status-preparing" },
-  ready:     { label:"🟢 Ready", cls:"status-ready" },
-};
-function seedOrdersIfEmpty(){
-  // Only seed the two sample orders the very first time this device is used —
-  // never re-add them once real orders exist or once seeding has happened before.
-  try{
-    if(localStorage.getItem("elo_seeded_v1")) return;
-  }catch(e){}
-  if(orders.length > 0) return;
-  orders = [
-    {
-      id:"EL041", name:"Ananya", table:"3", phone:"9876543210",
-      items:[{name:"Café Latte", qty:1, price:150}, {name:"Cheesecake", qty:1, price:180}],
-      total:330, status:"preparing", time:new Date()
-    },
-    {
-      id:"EL040", name:"Vikram", table:"5", phone:"9123456780",
-      items:[{name:"Cold Coffee", qty:2, price:160}, {name:"French Fries", qty:1, price:120}],
-      total:440, status:"ready", time:new Date()
-    },
-  ];
-  saveOrders();
-  try{ localStorage.setItem("elo_seeded_v1", "1"); }catch(e){}
-}
-function renderDashboard(){
-  seedOrdersIfEmpty();
-  const list = document.getElementById("dashList");
-  if(orders.length === 0){
-    list.innerHTML = `<div class="dash-empty">No orders yet. Orders placed by customers will appear here.</div>`;
-    return;
-  }
-  list.innerHTML = orders.map(o => {
-    const meta = STATUS_META[o.status];
-    return `
-    <div class="dash-card ${o.status==='ready'?'is-ready':''}">
-      <div class="dash-top">
-        <div>
-          <div class="dash-id">Order #${o.id}</div>
-          <div class="dash-meta">Customer: ${o.name} · Table: ${o.table}</div>
-          <div class="dash-meta">Phone: ${maskPhone(o.phone)}</div>
-        </div>
-        <div class="status-tag ${meta.cls}">${meta.label}</div>
-      </div>
-      <div class="dash-items">
-        ${o.items.map(i => `<div>${i.name} × ${i.qty}</div>`).join("")}
-      </div>
-      <div class="dash-total">
-        <span style="color:var(--coffee-500); font-size:13px;">Total</span>
-        <b>${money(o.total)}</b>
-      </div>
-      <div class="dash-actions">
-        <button type="button" ${o.status!=='new'?'disabled':''} class="${o.status==='new'?'step-active':''}" data-action="advanceStatus" data-id="${o.id}" data-target="accepted">Accept Order</button>
-        <button type="button" ${o.status!=='accepted'?'disabled':''} class="${o.status==='accepted'?'step-active':''}" data-action="advanceStatus" data-id="${o.id}" data-target="preparing">Mark Preparing</button>
-        <button type="button" ${o.status!=='preparing'?'disabled':''} class="${o.status==='preparing'?'step-active':''}" data-action="advanceStatus" data-id="${o.id}" data-target="ready">Mark Ready</button>
-      </div>
-    </div>`;
-  }).join("");
-}
-const VALID_TRANSITIONS = { new:"accepted", accepted:"preparing", preparing:"ready" };
-const STATUS_TOAST = { accepted:"accepted", preparing:"marked preparing", ready:"marked ready" };
-function advanceStatus(id, target){
-  const o = orders.find(x=>x.id===id);
-  if(!o) return;
-  // Only allow the exact next step in the sequence — guards against stale/duplicate clicks.
-  if(VALID_TRANSITIONS[o.status] !== target) return;
-  o.status = target;
-  toast("Order #" + id + " " + (STATUS_TOAST[target] || "updated"));
-  saveOrders();
-  renderDashboard();
-}
-function goToDashboard(){
-  renderDashboard();
-  document.getElementById("topbar").style.display = "none";
-  showScreen("screen-dashboard");
-}
-function goToWelcome(){
-  document.getElementById("topbar").style.display = "flex";
-  showScreen(customer.name ? "screen-menu" : "screen-welcome");
-  if(customer.name) renderMenu();
-}
-
+ 
 /* ================= EVENT DELEGATION =================
    All buttons use data-action attributes instead of inline onclick.
    One listener on document handles every click, including buttons
    rendered dynamically after the page first loads (menu items, cart
-   rows, dashboard cards). This is more robust than inline onclick
-   handlers, which some browser security settings can block. */
+   rows). This is more robust than inline onclick handlers, which some
+   browser security settings can block. */
 function handleAction(el){
   const action = el.dataset.action;
   const id = el.dataset.id;
   switch(action){
-    case "goToDashboard":   goToDashboard(); break;
-    case "goToWelcome":     goToWelcome(); break;
     case "submitDetails":   submitDetails(); break;
     case "openCart":        openCart(); break;
     case "closeCart":       closeCart(); break;
@@ -1030,11 +894,10 @@ function handleAction(el){
     case "addItem":         addItem(id); break;
     case "decItem":         decItem(id); break;
     case "removeItem":      removeItem(id); break;
-    case "advanceStatus":   advanceStatus(id, el.dataset.target); break;
     default: break;
   }
 }
-
+ 
 /* ================= INIT ================= */
 function initApp(){
   document.addEventListener("click", function(e){
@@ -1042,7 +905,7 @@ function initApp(){
     if(!el || el.disabled) return;
     handleAction(el);
   });
-
+ 
   const phoneInput = document.getElementById("inpPhone");
   if(phoneInput){
     phoneInput.addEventListener("input", (e)=>{
@@ -1055,11 +918,10 @@ function initApp(){
       if(e.key === "Enter") verifyCaptcha();
     });
   }
-
-  loadOrders();
+ 
   renderCatNav();
 }
-
+ 
 if(document.readyState === "loading"){
   document.addEventListener("DOMContentLoaded", initApp);
 } else {
@@ -1069,3 +931,4 @@ if(document.readyState === "loading"){
 </script>
 </body>
 </html>
+ 
