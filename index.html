@@ -469,7 +469,16 @@
 </head>
 <body>
 
-<button class="demo-link" onclick="goToDashboard()">Demo Dashboard →</button>
+<noscript>
+  <div style="position:fixed; inset:0; z-index:999; background:#B0392C; color:#FBF2E7; font-family:sans-serif; padding:24px; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px;">
+    <div style="font-size:20px; font-weight:800;">JavaScript is turned off in this browser</div>
+    <div style="font-size:15px; max-width:340px; line-height:1.5;">
+      This app needs JavaScript to work. In Chrome, tap the lock/info icon next to the address bar → Site settings → JavaScript → set to Allowed, then reload this page.
+    </div>
+  </div>
+</noscript>
+
+<button class="demo-link" data-action="goToDashboard" type="button">Demo Dashboard →</button>
 
 <div class="app-shell" id="appShell">
 
@@ -505,7 +514,7 @@
         <input type="tel" id="inpPhone" placeholder="10-digit mobile number" inputmode="numeric" maxlength="10" />
         <div class="msg" id="msgPhone"></div>
       </div>
-      <button class="btn btn-primary" onclick="submitDetails()">Continue to Menu →</button>
+      <button class="btn btn-primary" data-action="submitDetails" type="button">Continue to Menu →</button>
     </div>
   </section>
 
@@ -522,9 +531,10 @@
         <div class="n" id="cartBarCount">0 items</div>
         <div class="p" id="cartBarTotal">₹0</div>
       </div>
-      <button onclick="openCart()">🛒 View Cart</button>
+      <button data-action="openCart" type="button">🛒 View Cart</button>
     </div>
   </section>
+
   <!-- ============ SCREEN 5: CONFIRMATION ============ -->
   <section class="screen" id="screen-confirm">
     <div class="confirm-wrap">
@@ -533,6 +543,7 @@
       <p class="sub1" id="confirmThanks">Thank you!</p>
       <p class="sub2" id="confirmTable">Table —</p>
       <p class="sub2" style="margin-top:-16px;">Your order has been sent to Elo Café.</p>
+
       <div class="order-card">
         <div class="oc-top">
           <div class="oc-id" id="confirmOrderId">Order #EL000</div>
@@ -544,10 +555,12 @@
           <b id="confirmTotal">₹0</b>
         </div>
       </div>
+
       <p class="relax-note">Please sit back and relax. Your order is being prepared. ☕</p>
-      <button class="btn btn-ghost" onclick="startNewOrder()">Start a New Order</button>
+      <button class="btn btn-ghost" data-action="startNewOrder" type="button">Start a New Order</button>
     </div>
   </section>
+
   <!-- ============ SCREEN 6: DASHBOARD ============ -->
   <section class="screen" id="screen-dashboard">
     <div class="dash-shell">
@@ -556,19 +569,21 @@
           <h2>Elo Café — Order Dashboard</h2>
           <span>Live view for café staff</span>
         </div>
-        <button class="btn-ghost" style="width:auto; padding:8px 14px; border-radius:10px; font-size:12px;" onclick="goToWelcome()">Exit</button>
+        <button class="btn-ghost" style="width:auto; padding:8px 14px; border-radius:10px; font-size:12px;" data-action="goToWelcome" type="button">Exit</button>
       </div>
       <div class="dash-list" id="dashList"></div>
     </div>
   </section>
+
 </div>
+
 <!-- ============ CART DRAWER ============ -->
-<div class="overlay" id="overlay" onclick="closeAllOverlays()"></div>
+<div class="overlay" id="overlay" data-action="closeAllOverlays"></div>
 <div class="drawer" id="cartDrawer">
   <div class="drawer-handle"></div>
   <div class="drawer-head">
     <h3>Your Order</h3>
-    <button class="drawer-close" onclick="closeCart()">✕</button>
+    <button class="drawer-close" data-action="closeCart" type="button">✕</button>
   </div>
   <div class="drawer-body" id="drawerBody"></div>
   <div class="drawer-foot">
@@ -576,9 +591,10 @@
       <span class="lbl">Subtotal</span>
       <span class="amt" id="drawerSubtotal">₹0</span>
     </div>
-    <button class="btn btn-primary" id="placeOrderBtn" onclick="openCaptcha()">Place Order →</button>
+    <button class="btn btn-primary" id="placeOrderBtn" data-action="openCaptcha" type="button">Place Order →</button>
   </div>
 </div>
+
 <!-- ============ CAPTCHA MODAL ============ -->
 <div class="modal" id="captchaModal">
   <div class="modal-card">
@@ -587,18 +603,20 @@
     <div class="captcha-box">
       <div class="noise"></div>
       <div class="captcha-text" id="captchaText">K7P4X</div>
-      <button class="captcha-refresh" onclick="regenCaptcha()" title="Refresh code">⟳</button>
+      <button class="captcha-refresh" data-action="regenCaptcha" type="button" title="Refresh code">⟳</button>
     </div>
     <div class="field" style="margin-bottom:0;">
       <label>Enter CAPTCHA</label>
       <input type="text" id="captchaInput" placeholder="Type the code above" autocomplete="off" />
     </div>
     <div class="captcha-err" id="captchaErr"></div>
-    <button class="btn btn-primary" style="margin-top:6px;" onclick="verifyCaptcha()">Verify &amp; Confirm Order</button>
-    <button class="btn btn-ghost" style="margin-top:10px;" onclick="closeCaptcha()">Back to Cart</button>
+    <button class="btn btn-primary" style="margin-top:6px;" data-action="verifyCaptcha" type="button">Verify &amp; Confirm Order</button>
+    <button class="btn btn-ghost" style="margin-top:10px;" data-action="closeCaptcha" type="button">Back to Cart</button>
   </div>
 </div>
+
 <div class="toast" id="toast"></div>
+
 <script>
 /* ================= DATA ================= */
 const MENU = [
@@ -617,12 +635,14 @@ const MENU = [
     { id:"d2", name:"Cheesecake", desc:"Creamy classic, buttery crust", price:180, ic:"🍰" },
   ]},
 ];
+
 let customer = { name:"", table:"", phone:"" };
 let cart = {};              // { itemId: qty }
 let orders = [];            // shared order store (dashboard + confirmation)
 let orderCounter = 42;
 let currentCaptcha = "";
 let lastPlacedOrder = null;
+
 /* ---- persistence: keep orders across page refresh on this device ---- */
 const STORE_KEY = "elo_orders_v1";
 const COUNTER_KEY = "elo_order_counter_v1";
@@ -640,6 +660,7 @@ function loadOrders(){
     if(ctr){ orderCounter = parseInt(ctr, 10) || orderCounter; }
   }catch(e){ /* ignore corrupt/blocked storage */ }
 }
+
 /* ================= HELPERS ================= */
 function findItem(id){
   for(const c of MENU){ const f = c.items.find(i=>i.id===id); if(f) return f; }
@@ -656,12 +677,14 @@ function toast(msg){
   t.classList.add("show");
   setTimeout(()=>t.classList.remove("show"), 1800);
 }
+
 /* ================= SCREEN 1: DETAILS ================= */
 function submitDetails(){
   const name = document.getElementById("inpName").value.trim();
   const table = document.getElementById("inpTable").value.trim();
   const phone = document.getElementById("inpPhone").value.trim();
   let ok = true;
+
   const nameInp = document.getElementById("inpName");
   const tableInp = document.getElementById("inpTable");
   const phoneInp = document.getElementById("inpPhone");
@@ -669,6 +692,7 @@ function submitDetails(){
   document.getElementById("msgTable").textContent = "";
   document.getElementById("msgPhone").textContent = "";
   [nameInp, tableInp, phoneInp].forEach(i=>i.classList.remove("err"));
+
   if(!name){
     document.getElementById("msgName").textContent = "Please enter your name.";
     nameInp.classList.add("err"); ok = false;
@@ -682,17 +706,19 @@ function submitDetails(){
     phoneInp.classList.add("err"); ok = false;
   }
   if(!ok) return;
+
   customer = { name, table, phone };
   document.getElementById("tablePill").style.display = "block";
   document.getElementById("tablePill").textContent = "Table " + table;
   renderMenu();
   showScreen("screen-menu");
 }
+
 /* ================= SCREEN 2: MENU ================= */
 function renderCatNav(){
   const nav = document.getElementById("catNav");
   nav.innerHTML = MENU.map((c,idx)=>
-    `<div class="cat-chip ${idx===0?'active':''}" onclick="scrollToCat('${c.cat}', this)">${c.icon} ${c.cat}</div>`
+    `<div class="cat-chip ${idx===0?'active':''}" data-action="scrollToCat" data-cat="${c.cat}">${c.icon} ${c.cat}</div>`
   ).join("");
 }
 function scrollToCat(cat, el){
@@ -729,13 +755,13 @@ function renderItemControl(id){
   const el = document.getElementById("ctrl-"+id);
   const qty = cart[id] || 0;
   if(qty === 0){
-    el.innerHTML = `<button class="add-btn" onclick="addItem('${id}')">+ Add</button>`;
+    el.innerHTML = `<button class="add-btn" type="button" data-action="addItem" data-id="${id}">+ Add</button>`;
   } else {
     el.innerHTML = `
       <div class="stepper">
-        <button onclick="decItem('${id}')">−</button>
+        <button type="button" data-action="decItem" data-id="${id}">−</button>
         <span>${qty}</span>
-        <button onclick="addItem('${id}')">+</button>
+        <button type="button" data-action="addItem" data-id="${id}">+</button>
       </div>`;
   }
 }
@@ -774,6 +800,7 @@ function updateCartBar(){
     bar.classList.remove("show");
   }
 }
+
 /* ================= CART DRAWER ================= */
 function openCart(){
   renderDrawer();
@@ -798,12 +825,12 @@ function renderDrawer(){
           <div>
             <div class="ci-name">${item.name} × ${qty}</div>
             <div class="ci-price">${money(item.price)} each</div>
-            <button class="ci-remove" onclick="removeItem('${id}')">Remove</button>
+            <button class="ci-remove" type="button" data-action="removeItem" data-id="${id}">Remove</button>
           </div>
           <div class="stepper">
-            <button onclick="decItem('${id}')">−</button>
+            <button type="button" data-action="decItem" data-id="${id}">−</button>
             <span>${qty}</span>
-            <button onclick="addItem('${id}')">+</button>
+            <button type="button" data-action="addItem" data-id="${id}">+</button>
           </div>
         </div>`;
     }).join("");
@@ -811,6 +838,7 @@ function renderDrawer(){
   document.getElementById("drawerSubtotal").textContent = money(cartTotal());
   document.getElementById("placeOrderBtn").disabled = entries.length === 0;
 }
+
 /* ================= CAPTCHA ================= */
 function genCaptcha(){
   const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
@@ -868,3 +896,176 @@ function placeOrder(){
   cart = {};
   showScreen("screen-confirm");
 }
+
+/* ================= SCREEN 5: CONFIRMATION ================= */
+function renderConfirmation(order){
+  document.getElementById("confirmThanks").textContent = "Thank you, " + order.name + "!";
+  document.getElementById("confirmTable").textContent = "Table " + order.table;
+  document.getElementById("confirmOrderId").textContent = "Order #" + order.id;
+  document.getElementById("confirmItems").innerHTML = order.items.map(i =>
+    `<div class="oc-item"><span>${i.name} × ${i.qty}</span><span>${money(i.price*i.qty)}</span></div>`
+  ).join("");
+  document.getElementById("confirmTotal").textContent = money(order.total);
+}
+function startNewOrder(){
+  document.getElementById("inpName").value = "";
+  document.getElementById("inpTable").value = "";
+  document.getElementById("inpPhone").value = "";
+  document.getElementById("tablePill").style.display = "none";
+  showScreen("screen-welcome");
+}
+
+/* ================= SCREEN 6: DASHBOARD ================= */
+function maskPhone(p){
+  if(!p || p.length < 4) return p;
+  return p.slice(0,2) + "XXXXXX" + p.slice(-2);
+}
+const STATUS_META = {
+  new:       { label:"🟠 New Order", cls:"status-new" },
+  accepted:  { label:"🟡 Accepted", cls:"status-preparing" },
+  preparing: { label:"🟡 Preparing", cls:"status-preparing" },
+  ready:     { label:"🟢 Ready", cls:"status-ready" },
+};
+function seedOrdersIfEmpty(){
+  // Only seed the two sample orders the very first time this device is used —
+  // never re-add them once real orders exist or once seeding has happened before.
+  try{
+    if(localStorage.getItem("elo_seeded_v1")) return;
+  }catch(e){}
+  if(orders.length > 0) return;
+  orders = [
+    {
+      id:"EL041", name:"Ananya", table:"3", phone:"9876543210",
+      items:[{name:"Café Latte", qty:1, price:150}, {name:"Cheesecake", qty:1, price:180}],
+      total:330, status:"preparing", time:new Date()
+    },
+    {
+      id:"EL040", name:"Vikram", table:"5", phone:"9123456780",
+      items:[{name:"Cold Coffee", qty:2, price:160}, {name:"French Fries", qty:1, price:120}],
+      total:440, status:"ready", time:new Date()
+    },
+  ];
+  saveOrders();
+  try{ localStorage.setItem("elo_seeded_v1", "1"); }catch(e){}
+}
+function renderDashboard(){
+  seedOrdersIfEmpty();
+  const list = document.getElementById("dashList");
+  if(orders.length === 0){
+    list.innerHTML = `<div class="dash-empty">No orders yet. Orders placed by customers will appear here.</div>`;
+    return;
+  }
+  list.innerHTML = orders.map(o => {
+    const meta = STATUS_META[o.status];
+    return `
+    <div class="dash-card ${o.status==='ready'?'is-ready':''}">
+      <div class="dash-top">
+        <div>
+          <div class="dash-id">Order #${o.id}</div>
+          <div class="dash-meta">Customer: ${o.name} · Table: ${o.table}</div>
+          <div class="dash-meta">Phone: ${maskPhone(o.phone)}</div>
+        </div>
+        <div class="status-tag ${meta.cls}">${meta.label}</div>
+      </div>
+      <div class="dash-items">
+        ${o.items.map(i => `<div>${i.name} × ${i.qty}</div>`).join("")}
+      </div>
+      <div class="dash-total">
+        <span style="color:var(--coffee-500); font-size:13px;">Total</span>
+        <b>${money(o.total)}</b>
+      </div>
+      <div class="dash-actions">
+        <button type="button" ${o.status!=='new'?'disabled':''} class="${o.status==='new'?'step-active':''}" data-action="advanceStatus" data-id="${o.id}" data-target="accepted">Accept Order</button>
+        <button type="button" ${o.status!=='accepted'?'disabled':''} class="${o.status==='accepted'?'step-active':''}" data-action="advanceStatus" data-id="${o.id}" data-target="preparing">Mark Preparing</button>
+        <button type="button" ${o.status!=='preparing'?'disabled':''} class="${o.status==='preparing'?'step-active':''}" data-action="advanceStatus" data-id="${o.id}" data-target="ready">Mark Ready</button>
+      </div>
+    </div>`;
+  }).join("");
+}
+const VALID_TRANSITIONS = { new:"accepted", accepted:"preparing", preparing:"ready" };
+const STATUS_TOAST = { accepted:"accepted", preparing:"marked preparing", ready:"marked ready" };
+function advanceStatus(id, target){
+  const o = orders.find(x=>x.id===id);
+  if(!o) return;
+  // Only allow the exact next step in the sequence — guards against stale/duplicate clicks.
+  if(VALID_TRANSITIONS[o.status] !== target) return;
+  o.status = target;
+  toast("Order #" + id + " " + (STATUS_TOAST[target] || "updated"));
+  saveOrders();
+  renderDashboard();
+}
+function goToDashboard(){
+  renderDashboard();
+  document.getElementById("topbar").style.display = "none";
+  showScreen("screen-dashboard");
+}
+function goToWelcome(){
+  document.getElementById("topbar").style.display = "flex";
+  showScreen(customer.name ? "screen-menu" : "screen-welcome");
+  if(customer.name) renderMenu();
+}
+
+/* ================= EVENT DELEGATION =================
+   All buttons use data-action attributes instead of inline onclick.
+   One listener on document handles every click, including buttons
+   rendered dynamically after the page first loads (menu items, cart
+   rows, dashboard cards). This is more robust than inline onclick
+   handlers, which some browser security settings can block. */
+function handleAction(el){
+  const action = el.dataset.action;
+  const id = el.dataset.id;
+  switch(action){
+    case "goToDashboard":   goToDashboard(); break;
+    case "goToWelcome":     goToWelcome(); break;
+    case "submitDetails":   submitDetails(); break;
+    case "openCart":        openCart(); break;
+    case "closeCart":       closeCart(); break;
+    case "closeAllOverlays":closeAllOverlays(); break;
+    case "openCaptcha":     openCaptcha(); break;
+    case "closeCaptcha":    closeCaptcha(); break;
+    case "regenCaptcha":    regenCaptcha(); break;
+    case "verifyCaptcha":   verifyCaptcha(); break;
+    case "startNewOrder":   startNewOrder(); break;
+    case "scrollToCat":     scrollToCat(el.dataset.cat, el); break;
+    case "addItem":         addItem(id); break;
+    case "decItem":         decItem(id); break;
+    case "removeItem":      removeItem(id); break;
+    case "advanceStatus":   advanceStatus(id, el.dataset.target); break;
+    default: break;
+  }
+}
+
+/* ================= INIT ================= */
+function initApp(){
+  document.addEventListener("click", function(e){
+    const el = e.target.closest("[data-action]");
+    if(!el || el.disabled) return;
+    handleAction(el);
+  });
+
+  const phoneInput = document.getElementById("inpPhone");
+  if(phoneInput){
+    phoneInput.addEventListener("input", (e)=>{
+      e.target.value = e.target.value.replace(/\D/g,"").slice(0,10);
+    });
+  }
+  const captchaInput = document.getElementById("captchaInput");
+  if(captchaInput){
+    captchaInput.addEventListener("keydown", (e)=>{
+      if(e.key === "Enter") verifyCaptcha();
+    });
+  }
+
+  loadOrders();
+  renderCatNav();
+}
+
+if(document.readyState === "loading"){
+  document.addEventListener("DOMContentLoaded", initApp);
+} else {
+  // DOM is already parsed (script runs at end of body) — run immediately.
+  initApp();
+}
+</script>
+</body>
+</html>
