@@ -44,7 +44,7 @@
     overflow-x:hidden;
   }
   .serif{ font-family:'Fraunces', serif; }
- 
+
   /* ---------- Desktop ambient shell ---------- */
   .app-shell{
     width:100%;
@@ -71,7 +71,7 @@
       box-shadow: 0 30px 70px rgba(43,27,17,0.18), 0 0 0 1px var(--line);
     }
   }
- 
+
   /* ---------- Header ---------- */
   .topbar{
     display:flex; align-items:center; justify-content:space-between;
@@ -101,12 +101,12 @@
     border:1px solid rgba(176,96,46,0.25);
     padding:6px 12px; border-radius:999px;
   }
- 
+
   /* ---------- Screens ---------- */
   .screen{ display:none; flex:1; flex-direction:column; animation:rise 380ms cubic-bezier(.2,.8,.2,1); }
   .screen.active{ display:flex; }
   @keyframes rise{ from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);} }
- 
+
   /* ================= WELCOME ================= */
   .hero{
     padding:6px 26px 0;
@@ -144,7 +144,7 @@
     margin-bottom:26px;
   }
   .welcome-note b{ color:var(--coffee-900); }
- 
+
   .form-wrap{ padding:0 26px 26px; }
   .field{ margin-bottom:16px; }
   .field label{
@@ -175,7 +175,7 @@
     color:var(--red);
     margin-top:5px;
   }
- 
+
   .btn{
     display:flex; align-items:center; justify-content:center; gap:8px;
     width:100%;
@@ -204,12 +204,12 @@
     background:var(--coffee-900);
     color:var(--cream-light);
   }
- 
+
   /* ================= MENU ================= */
   .menu-head{ padding:2px 22px 6px; }
   .menu-head h2{ font-family:'Fraunces', serif; font-size:26px; margin:0 0 2px; }
   .menu-head p{ margin:0; font-size:13.5px; color:var(--coffee-500); font-style:italic; font-family:'Fraunces', serif;}
- 
+
   .cat-nav{
     display:flex; gap:8px; padding:16px 22px 8px;
     overflow-x:auto; scrollbar-width:none; position:sticky; top:70px; z-index:15;
@@ -233,7 +233,7 @@
     color:var(--cream-light);
     border-color:var(--coffee-900);
   }
- 
+
   .menu-list{ padding:6px 18px 120px; }
   .cat-section{ margin-top:22px; }
   .cat-title{
@@ -243,6 +243,7 @@
     color:var(--coffee-900);
   }
   .item-card{
+    position:relative;
     display:flex; gap:14px;
     background:var(--paper);
     border:1px solid var(--line);
@@ -257,6 +258,15 @@
     display:flex; align-items:center; justify-content:center;
     font-size:26px;
     background:linear-gradient(155deg, #EFDCC0, #E3C79E);
+    overflow:hidden;
+  }
+  .item-thumb img{ width:100%; height:100%; object-fit:cover; border-radius:14px; }
+  .new-badge{
+    position:absolute; top:-7px; left:10px;
+    background:var(--orange); color:#fff;
+    font-size:10px; font-weight:800; letter-spacing:.4px;
+    padding:3px 8px; border-radius:999px;
+    box-shadow:0 3px 8px rgba(201,122,42,0.4);
   }
   .item-info{ flex:1; min-width:0; }
   .item-info h4{
@@ -286,7 +296,7 @@
     font-size:15px; font-weight:700; cursor:pointer; line-height:1;
   }
   .stepper span{ color:var(--cream-light); font-size:13.5px; font-weight:700; min-width:14px; text-align:center; }
- 
+
   .cart-bar{
     position:fixed; left:50%; transform:translateX(-50%);
     bottom:0; width:100%; max-width:480px;
@@ -305,7 +315,7 @@
     background:var(--clay); color:#FBF2E7; font-weight:700; font-size:14.5px;
     cursor:pointer;
   }
- 
+
   /* ================= CART DRAWER ================= */
   .overlay{
     position:fixed; inset:0; background:rgba(43,27,17,0.45);
@@ -340,7 +350,7 @@
   .subtotal-row{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px; }
   .subtotal-row .lbl{ font-size:13.5px; color:var(--coffee-500); }
   .subtotal-row .amt{ font-family:'Fraunces', serif; font-size:24px; font-weight:600; color:var(--coffee-900); }
- 
+
   /* ================= CAPTCHA MODAL ================= */
   .modal{
     position:fixed; inset:0; z-index:50; display:none;
@@ -386,7 +396,7 @@
     width:26px; height:26px; border-radius:8px; cursor:pointer; font-size:13px;
   }
   .captcha-err{ color:var(--red); font-size:12.5px; min-height:16px; margin:8px 0 4px; text-align:center; }
- 
+
   /* ================= CONFIRMATION ================= */
   .confirm-wrap{ padding:30px 26px 40px; text-align:center; flex:1; display:flex; flex-direction:column; }
   .confirm-badge{
@@ -411,7 +421,7 @@
   .oc-total{ display:flex; justify-content:space-between; align-items:center; margin-top:12px; padding-top:12px; border-top:1px dashed var(--line); }
   .oc-total b{ font-family:'Fraunces', serif; font-size:19px; color:var(--coffee-900); }
   .relax-note{ font-size:13.5px; color:var(--coffee-500); font-style:italic; font-family:'Fraunces', serif; margin-bottom:24px; }
- 
+
   .toast{
     position:fixed; left:50%; transform:translateX(-50%) translateY(10px);
     bottom:26px; z-index:70;
@@ -424,7 +434,7 @@
 </style>
 </head>
 <body>
- 
+
 <noscript>
   <div style="position:fixed; inset:0; z-index:999; background:#B0392C; color:#FBF2E7; font-family:sans-serif; padding:24px; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px;">
     <div style="font-size:20px; font-weight:800;">JavaScript is turned off in this browser</div>
@@ -433,14 +443,14 @@
     </div>
   </div>
 </noscript>
- 
+
 <div class="app-shell" id="appShell">
- 
+
   <div class="topbar" id="topbar">
     <div class="wordmark">Elo <small>CAFÉ</small></div>
     <div class="table-pill" id="tablePill" style="display:none;"></div>
   </div>
- 
+
   <!-- ============ SCREEN 1: WELCOME ============ -->
   <section class="screen active" id="screen-welcome">
     <div class="hero">
@@ -471,7 +481,7 @@
       <button class="btn btn-primary" data-action="submitDetails" type="button">Continue to Menu →</button>
     </div>
   </section>
- 
+
   <!-- ============ SCREEN 2: MENU ============ -->
   <section class="screen" id="screen-menu">
     <div class="menu-head">
@@ -488,7 +498,7 @@
       <button data-action="openCart" type="button">🛒 View Cart</button>
     </div>
   </section>
- 
+
   <!-- ============ SCREEN 5: CONFIRMATION ============ -->
   <section class="screen" id="screen-confirm">
     <div class="confirm-wrap">
@@ -497,7 +507,7 @@
       <p class="sub1" id="confirmThanks">Thank you!</p>
       <p class="sub2" id="confirmTable">Table —</p>
       <p class="sub2" style="margin-top:-16px;">Your order has been sent to Elo Café.</p>
- 
+
       <div class="order-card">
         <div class="oc-top">
           <div class="oc-id" id="confirmOrderId">Order #EL000</div>
@@ -509,15 +519,15 @@
           <b id="confirmTotal">₹0</b>
         </div>
       </div>
- 
+
       <p class="relax-note">Please sit back and relax. Your order is being prepared. ☕</p>
       <button class="btn btn-ghost" data-action="startNewOrder" type="button">Start a New Order</button>
     </div>
   </section>
- 
- 
+
+
 </div>
- 
+
 <!-- ============ CART DRAWER ============ -->
 <div class="overlay" id="overlay" data-action="closeAllOverlays"></div>
 <div class="drawer" id="cartDrawer">
@@ -535,7 +545,7 @@
     <button class="btn btn-primary" id="placeOrderBtn" data-action="openCaptcha" type="button">Place Order →</button>
   </div>
 </div>
- 
+
 <!-- ============ CAPTCHA MODAL ============ -->
 <div class="modal" id="captchaModal">
   <div class="modal-card">
@@ -555,39 +565,80 @@
     <button class="btn btn-ghost" style="margin-top:10px;" data-action="closeCaptcha" type="button">Back to Cart</button>
   </div>
 </div>
- 
+
 <div class="toast" id="toast"></div>
- 
+
 <script>
-/* ================= DATA ================= */
-const MENU = [
-  { cat:"Coffee", icon:"☕", items:[
-    { id:"c1", name:"Cappuccino", desc:"Espresso, steamed milk, velvety foam", price:140, ic:"☕" },
-    { id:"c2", name:"Café Latte", desc:"Smooth espresso with silky milk", price:150, ic:"🥛" },
-    { id:"c3", name:"Cold Coffee", desc:"Chilled, blended, lightly sweet", price:160, ic:"🧊" },
-  ]},
-  { cat:"Snacks", icon:"🍕", items:[
-    { id:"s1", name:"Veg Sandwich", desc:"Grilled bread, fresh veggies, chutney", price:140, ic:"🥪" },
-    { id:"s2", name:"Cheese Garlic Bread", desc:"Toasted, buttery, extra cheesy", price:160, ic:"🧀" },
-    { id:"s3", name:"French Fries", desc:"Crisp, golden, lightly salted", price:120, ic:"🍟" },
-  ]},
-  { cat:"Desserts", icon:"🍰", items:[
-    { id:"d1", name:"Chocolate Brownie", desc:"Warm, fudgy, rich cocoa", price:130, ic:"🍫" },
-    { id:"d2", name:"Cheesecake", desc:"Creamy classic, buttery crust", price:180, ic:"🍰" },
-  ]},
+/* ================= DATA =================
+   The menu is no longer hardcoded here — it's read from the SAME
+   localStorage the admin panel manages (elo_admin_menu / elo_admin_categories),
+   so items the owner adds, edits, hides, or removes in Admin > Menu
+   Management show up here automatically. These FALLBACK_* arrays only
+   matter the very first time this page runs before admin.html has ever
+   been opened on this browser/origin — after that, admin's data wins. */
+const FALLBACK_CATEGORIES = [
+  { id:"cat1", name:"Burgers", active:true },
+  { id:"cat2", name:"Pizza", active:true },
+  { id:"cat3", name:"Snacks", active:true },
+  { id:"cat4", name:"Main Course", active:true },
+  { id:"cat5", name:"Beverages", active:true },
+  { id:"cat6", name:"Desserts", active:true },
 ];
- 
+const FALLBACK_MENU = [
+  { id:"m1", name:"Cheese Burger", desc:"Juicy patty with melted cheese", price:149, categoryId:"cat1", available:true, image:null, createdAt:"2024-01-01T00:00:00.000Z" },
+  { id:"m2", name:"Veg Burger", desc:"Crisp veg patty, fresh lettuce", price:129, categoryId:"cat1", available:true, image:null, createdAt:"2024-01-01T00:00:00.000Z" },
+  { id:"m3", name:"Margherita Pizza", desc:"Classic cheese & tomato", price:249, categoryId:"cat2", available:true, image:null, createdAt:"2024-01-01T00:00:00.000Z" },
+  { id:"m4", name:"Farmhouse Pizza", desc:"Loaded veggie pizza", price:279, categoryId:"cat2", available:true, image:null, createdAt:"2024-01-01T00:00:00.000Z" },
+  { id:"m5", name:"French Fries", desc:"Crisp golden fries", price:99, categoryId:"cat3", available:true, image:null, createdAt:"2024-01-01T00:00:00.000Z" },
+  { id:"m6", name:"Paneer Tikka", desc:"Grilled cottage cheese skewers", price:189, categoryId:"cat4", available:true, image:null, createdAt:"2024-01-01T00:00:00.000Z" },
+  { id:"m7", name:"Veg Biryani", desc:"Fragrant rice, mixed vegetables", price:199, categoryId:"cat4", available:true, image:null, createdAt:"2024-01-01T00:00:00.000Z" },
+  { id:"m8", name:"Cold Coffee", desc:"Chilled, creamy, lightly sweet", price:99, categoryId:"cat5", available:true, image:null, createdAt:"2024-01-01T00:00:00.000Z" },
+  { id:"m9", name:"Masala Chai", desc:"Spiced Indian tea", price:49, categoryId:"cat5", available:true, image:null, createdAt:"2024-01-01T00:00:00.000Z" },
+  { id:"m10", name:"Chocolate Brownie", desc:"Warm, fudgy, rich cocoa", price:129, categoryId:"cat6", available:false, image:null, createdAt:"2024-01-01T00:00:00.000Z" },
+];
+const CATEGORY_ICONS = {
+  "burgers":"🍔", "pizza":"🍕", "snacks":"🍟", "main course":"🍛",
+  "beverages":"☕", "coffee":"☕", "drinks":"🥤", "desserts":"🍰",
+  "starters":"🥗", "salads":"🥗", "breakfast":"🍳", "biryani":"🍚",
+};
+function categoryIcon(name){
+  return CATEGORY_ICONS[(name||"").trim().toLowerCase()] || "🍽️";
+}
+// How many days a newly-added item keeps showing the "NEW" badge.
+const NEW_ITEM_WINDOW_DAYS = 7;
+function isNewItem(item){
+  if(!item.createdAt) return false;
+  const ageDays = (Date.now() - new Date(item.createdAt).getTime()) / 86400000;
+  return ageDays >= 0 && ageDays <= NEW_ITEM_WINDOW_DAYS;
+}
+function buildMenuFromAdmin(){
+  const categories = adminLsGet(ADMIN_LS.categories, FALLBACK_CATEGORIES);
+  const items = adminLsGet(ADMIN_LS.menu, FALLBACK_MENU);
+  return categories
+    .filter(c => c.active !== false)
+    .map(c => ({
+      cat: c.name,
+      icon: categoryIcon(c.name),
+      items: items.filter(i => i.categoryId === c.id && i.available !== false),
+    }))
+    .filter(c => c.items.length > 0);
+}
+let MENU = [];
+function refreshMenu(){
+  MENU = buildMenuFromAdmin();
+}
+
 let customer = { name:"", table:"", phone:"" };
 let cart = {};              // { itemId: qty }
 let currentCaptcha = "";
- 
+
 /* ---- shared order store ----
    This page no longer keeps its own separate order list or its own demo
    dashboard. Every order placed here is written directly into the SAME
    localStorage keys the admin panel (admin.html) reads from, using the
    same id counter and the same order shape, so a placed order shows up
    as a real pending order — with a real notification — in Admin > Orders.
- 
+
    IMPORTANT: this only works if index_1.html and admin.html are served
    from the same origin (e.g. both opened from the same local web server /
    same domain). Two separate local files opened as file:// tabs generally
@@ -595,6 +646,8 @@ let currentCaptcha = "";
 const ADMIN_LS = {
   orders: "elo_admin_orders",
   counter: "elo_admin_counter",
+  menu: "elo_admin_menu",
+  categories: "elo_admin_categories",
 };
 function adminLsGet(key, fallback){
   try{ const raw = localStorage.getItem(key); return raw ? JSON.parse(raw) : fallback; }catch(e){ return fallback; }
@@ -607,7 +660,7 @@ function nextAdminOrderId(){
   adminLsSet(ADMIN_LS.counter, counter);
   return "ORD" + counter;
 }
- 
+
 /* ================= HELPERS ================= */
 function findItem(id){
   for(const c of MENU){ const f = c.items.find(i=>i.id===id); if(f) return f; }
@@ -624,14 +677,14 @@ function toast(msg){
   t.classList.add("show");
   setTimeout(()=>t.classList.remove("show"), 1800);
 }
- 
+
 /* ================= SCREEN 1: DETAILS ================= */
 function submitDetails(){
   const name = document.getElementById("inpName").value.trim();
   const table = document.getElementById("inpTable").value.trim();
   const phone = document.getElementById("inpPhone").value.trim();
   let ok = true;
- 
+
   const nameInp = document.getElementById("inpName");
   const tableInp = document.getElementById("inpTable");
   const phoneInp = document.getElementById("inpPhone");
@@ -639,7 +692,7 @@ function submitDetails(){
   document.getElementById("msgTable").textContent = "";
   document.getElementById("msgPhone").textContent = "";
   [nameInp, tableInp, phoneInp].forEach(i=>i.classList.remove("err"));
- 
+
   if(!name){
     document.getElementById("msgName").textContent = "Please enter your name.";
     nameInp.classList.add("err"); ok = false;
@@ -653,14 +706,14 @@ function submitDetails(){
     phoneInp.classList.add("err"); ok = false;
   }
   if(!ok) return;
- 
+
   customer = { name, table, phone };
   document.getElementById("tablePill").style.display = "block";
   document.getElementById("tablePill").textContent = "Table " + table;
   renderMenu();
   showScreen("screen-menu");
 }
- 
+
 /* ================= SCREEN 2: MENU ================= */
 function renderCatNav(){
   const nav = document.getElementById("catNav");
@@ -682,10 +735,11 @@ function renderMenu(){
       <h3 class="cat-title">${c.icon} ${c.cat}</h3>
       ${c.items.map(item => `
         <div class="item-card">
-          <div class="item-thumb">${item.ic}</div>
+          ${isNewItem(item) ? '<span class="new-badge">NEW</span>' : ''}
+          <div class="item-thumb">${item.image ? `<img src="${item.image}" alt="${item.name}" />` : c.icon}</div>
           <div class="item-info">
             <h4>${item.name}</h4>
-            <p>${item.desc}</p>
+            <p>${item.desc || ""}</p>
             <div class="item-bottom">
               <span class="item-price">${money(item.price)}</span>
               <div id="ctrl-${item.id}"></div>
@@ -747,7 +801,7 @@ function updateCartBar(){
     bar.classList.remove("show");
   }
 }
- 
+
 /* ================= CART DRAWER ================= */
 function openCart(){
   renderDrawer();
@@ -785,7 +839,7 @@ function renderDrawer(){
   document.getElementById("drawerSubtotal").textContent = money(cartTotal());
   document.getElementById("placeOrderBtn").disabled = entries.length === 0;
 }
- 
+
 /* ================= CAPTCHA ================= */
 function genCaptcha(){
   const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
@@ -819,7 +873,7 @@ function verifyCaptcha(){
   document.getElementById("captchaModal").classList.remove("show");
   placeOrder();
 }
- 
+
 /* ================= PLACE ORDER ================= */
 function placeOrder(){
   const items = Object.entries(cart).map(([id,qty]) => {
@@ -829,7 +883,7 @@ function placeOrder(){
   const subtotal = items.reduce((s,i)=> s + i.price*i.qty, 0);
   const tax = Math.round(subtotal * 0.05);
   const total = subtotal + tax;
- 
+
   const order = {
     id: nextAdminOrderId(),
     tableNumber: parseInt(customer.table, 10) || customer.table,
@@ -840,19 +894,19 @@ function placeOrder(){
     createdAt: new Date().toISOString(),
     isNew: true,
   };
- 
+
   // Write straight into the admin panel's shared order list — this is the
   // single source of truth both apps read from, so it shows up (and
   // triggers a real notification) in Admin > Orders immediately.
   const allOrders = adminLsGet(ADMIN_LS.orders, []);
   allOrders.unshift(order);
   adminLsSet(ADMIN_LS.orders, allOrders);
- 
+
   renderConfirmation(order);
   cart = {};
   showScreen("screen-confirm");
 }
- 
+
 /* ================= SCREEN 5: CONFIRMATION ================= */
 function renderConfirmation(order){
   document.getElementById("confirmThanks").textContent = "Thank you, " + order.customerName + "!";
@@ -870,7 +924,7 @@ function startNewOrder(){
   document.getElementById("tablePill").style.display = "none";
   showScreen("screen-welcome");
 }
- 
+
 /* ================= EVENT DELEGATION =================
    All buttons use data-action attributes instead of inline onclick.
    One listener on document handles every click, including buttons
@@ -897,7 +951,7 @@ function handleAction(el){
     default: break;
   }
 }
- 
+
 /* ================= INIT ================= */
 function initApp(){
   document.addEventListener("click", function(e){
@@ -905,7 +959,7 @@ function initApp(){
     if(!el || el.disabled) return;
     handleAction(el);
   });
- 
+
   const phoneInput = document.getElementById("inpPhone");
   if(phoneInput){
     phoneInput.addEventListener("input", (e)=>{
@@ -918,10 +972,27 @@ function initApp(){
       if(e.key === "Enter") verifyCaptcha();
     });
   }
- 
+
+  refreshMenu();
   renderCatNav();
+  startMenuLiveSync();
 }
- 
+function startMenuLiveSync(){
+  window.addEventListener("storage", function(e){
+    if(e.key === ADMIN_LS.menu || e.key === ADMIN_LS.categories){
+      refreshMenu();
+      // Only the menu screen renders the catalog; re-render it live if
+      // that's what's currently showing, otherwise the next renderMenu()
+      // call (e.g. after submitDetails) will already pick up fresh data.
+      if(document.getElementById("screen-menu").classList.contains("active")) renderMenu();
+    }
+  });
+  setInterval(function(){
+    refreshMenu();
+    if(document.getElementById("screen-menu").classList.contains("active")) renderMenu();
+  }, 5000);
+}
+
 if(document.readyState === "loading"){
   document.addEventListener("DOMContentLoaded", initApp);
 } else {
@@ -931,4 +1002,3 @@ if(document.readyState === "loading"){
 </script>
 </body>
 </html>
- 
