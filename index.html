@@ -44,7 +44,6 @@
     overflow-x:hidden;
   }
   .serif{ font-family:'Fraunces', serif; }
-
   /* ---------- Desktop ambient shell ---------- */
   .app-shell{
     width:100%;
@@ -71,8 +70,7 @@
       box-shadow: 0 30px 70px rgba(43,27,17,0.18), 0 0 0 1px var(--line);
     }
   }
-
-  /* ---------- Header ---------- */
+ /* ---------- Header ---------- */
   .topbar{
     display:flex; align-items:center; justify-content:space-between;
     padding:18px 22px 14px;
@@ -101,13 +99,11 @@
     border:1px solid rgba(176,96,46,0.25);
     padding:6px 12px; border-radius:999px;
   }
-
-  /* ---------- Screens ---------- */
+/* ---------- Screens ---------- */
   .screen{ display:none; flex:1; flex-direction:column; animation:rise 380ms cubic-bezier(.2,.8,.2,1); }
   .screen.active{ display:flex; }
   @keyframes rise{ from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);} }
-
-  /* ================= WELCOME ================= */
+/* ================= WELCOME ================= */
   .hero{
     padding:6px 26px 0;
   }
@@ -204,8 +200,7 @@
     background:var(--coffee-900);
     color:var(--cream-light);
   }
-
-  /* ================= MENU ================= */
+/* ================= MENU ================= */
   .menu-head{ padding:2px 22px 6px; }
   .menu-head h2{ font-family:'Fraunces', serif; font-size:26px; margin:0 0 2px; }
   .menu-head p{ margin:0; font-size:13.5px; color:var(--coffee-500); font-style:italic; font-family:'Fraunces', serif;}
@@ -315,8 +310,7 @@
     background:var(--clay); color:#FBF2E7; font-weight:700; font-size:14.5px;
     cursor:pointer;
   }
-
-  /* ================= CART DRAWER ================= */
+/* ================= CART DRAWER ================= */
   .overlay{
     position:fixed; inset:0; background:rgba(43,27,17,0.45);
     z-index:40; display:none; opacity:0; transition:opacity 220ms ease;
@@ -350,8 +344,7 @@
   .subtotal-row{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px; }
   .subtotal-row .lbl{ font-size:13.5px; color:var(--coffee-500); }
   .subtotal-row .amt{ font-family:'Fraunces', serif; font-size:24px; font-weight:600; color:var(--coffee-900); }
-
-  /* ================= CAPTCHA MODAL ================= */
+/* ================= CAPTCHA MODAL ================= */
   .modal{
     position:fixed; inset:0; z-index:50; display:none;
     align-items:center; justify-content:center; padding:20px;
@@ -396,8 +389,7 @@
     width:26px; height:26px; border-radius:8px; cursor:pointer; font-size:13px;
   }
   .captcha-err{ color:var(--red); font-size:12.5px; min-height:16px; margin:8px 0 4px; text-align:center; }
-
-  /* ================= CONFIRMATION ================= */
+/* ================= CONFIRMATION ================= */
   .confirm-wrap{ padding:30px 26px 40px; text-align:center; flex:1; display:flex; flex-direction:column; }
   .confirm-badge{
     width:78px; height:78px; border-radius:50%;
@@ -450,8 +442,7 @@
     <div class="wordmark">Elo <small>CAFÉ</small></div>
     <div class="table-pill" id="tablePill" style="display:none;"></div>
   </div>
-
-  <!-- ============ SCREEN 1: WELCOME ============ -->
+<!-- ============ SCREEN 1: WELCOME ============ -->
   <section class="screen active" id="screen-welcome">
     <div class="hero">
       <div class="hero-mark">☕</div>
@@ -481,8 +472,7 @@
       <button class="btn btn-primary" data-action="submitDetails" type="button">Continue to Menu →</button>
     </div>
   </section>
-
-  <!-- ============ SCREEN 2: MENU ============ -->
+<!-- ============ SCREEN 2: MENU ============ -->
   <section class="screen" id="screen-menu">
     <div class="menu-head">
       <h2>Elo Café</h2>
@@ -498,8 +488,7 @@
       <button data-action="openCart" type="button">🛒 View Cart</button>
     </div>
   </section>
-
-  <!-- ============ SCREEN 5: CONFIRMATION ============ -->
+ <!-- ============ SCREEN 5: CONFIRMATION ============ -->
   <section class="screen" id="screen-confirm">
     <div class="confirm-wrap">
       <div class="confirm-badge">🎉</div>
@@ -524,10 +513,7 @@
       <button class="btn btn-ghost" data-action="startNewOrder" type="button">Start a New Order</button>
     </div>
   </section>
-
-
 </div>
-
 <!-- ============ CART DRAWER ============ -->
 <div class="overlay" id="overlay" data-action="closeAllOverlays"></div>
 <div class="drawer" id="cartDrawer">
@@ -545,7 +531,6 @@
     <button class="btn btn-primary" id="placeOrderBtn" data-action="openCaptcha" type="button">Place Order →</button>
   </div>
 </div>
-
 <!-- ============ CAPTCHA MODAL ============ -->
 <div class="modal" id="captchaModal">
   <div class="modal-card">
@@ -567,7 +552,6 @@
 </div>
 
 <div class="toast" id="toast"></div>
-
 <script>
 /* ================= DATA =================
    The menu is no longer hardcoded here — it's read from the SAME
@@ -627,11 +611,9 @@ let MENU = [];
 function refreshMenu(){
   MENU = buildMenuFromAdmin();
 }
-
 let customer = { name:"", table:"", phone:"" };
 let cart = {};              // { itemId: qty }
 let currentCaptcha = "";
-
 /* ---- shared order store ----
    This page no longer keeps its own separate order list or its own demo
    dashboard. Every order placed here is written directly into the SAME
@@ -660,7 +642,6 @@ function nextAdminOrderId(){
   adminLsSet(ADMIN_LS.counter, counter);
   return "ORD" + counter;
 }
-
 /* ================= HELPERS ================= */
 function findItem(id){
   for(const c of MENU){ const f = c.items.find(i=>i.id===id); if(f) return f; }
@@ -677,7 +658,6 @@ function toast(msg){
   t.classList.add("show");
   setTimeout(()=>t.classList.remove("show"), 1800);
 }
-
 /* ================= SCREEN 1: DETAILS ================= */
 function submitDetails(){
   const name = document.getElementById("inpName").value.trim();
@@ -713,7 +693,6 @@ function submitDetails(){
   renderMenu();
   showScreen("screen-menu");
 }
-
 /* ================= SCREEN 2: MENU ================= */
 function renderCatNav(){
   const nav = document.getElementById("catNav");
@@ -801,7 +780,6 @@ function updateCartBar(){
     bar.classList.remove("show");
   }
 }
-
 /* ================= CART DRAWER ================= */
 function openCart(){
   renderDrawer();
@@ -839,7 +817,6 @@ function renderDrawer(){
   document.getElementById("drawerSubtotal").textContent = money(cartTotal());
   document.getElementById("placeOrderBtn").disabled = entries.length === 0;
 }
-
 /* ================= CAPTCHA ================= */
 function genCaptcha(){
   const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
@@ -873,7 +850,6 @@ function verifyCaptcha(){
   document.getElementById("captchaModal").classList.remove("show");
   placeOrder();
 }
-
 /* ================= PLACE ORDER ================= */
 function placeOrder(){
   const items = Object.entries(cart).map(([id,qty]) => {
@@ -894,7 +870,6 @@ function placeOrder(){
     createdAt: new Date().toISOString(),
     isNew: true,
   };
-
   // Write straight into the admin panel's shared order list — this is the
   // single source of truth both apps read from, so it shows up (and
   // triggers a real notification) in Admin > Orders immediately.
@@ -906,7 +881,6 @@ function placeOrder(){
   cart = {};
   showScreen("screen-confirm");
 }
-
 /* ================= SCREEN 5: CONFIRMATION ================= */
 function renderConfirmation(order){
   document.getElementById("confirmThanks").textContent = "Thank you, " + order.customerName + "!";
@@ -924,7 +898,6 @@ function startNewOrder(){
   document.getElementById("tablePill").style.display = "none";
   showScreen("screen-welcome");
 }
-
 /* ================= EVENT DELEGATION =================
    All buttons use data-action attributes instead of inline onclick.
    One listener on document handles every click, including buttons
@@ -951,7 +924,6 @@ function handleAction(el){
     default: break;
   }
 }
-
 /* ================= INIT ================= */
 function initApp(){
   document.addEventListener("click", function(e){
